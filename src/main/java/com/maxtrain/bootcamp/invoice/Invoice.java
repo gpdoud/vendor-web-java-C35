@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.maxtrain.bootcamp.invoiceline.Invoiceline;
 import com.maxtrain.bootcamp.vendor.Vendor;
 
@@ -20,6 +21,7 @@ public class Invoice {
 	@Column(columnDefinition="decimal(9,2) NOT NULL DEFAULT 0.0")
 	private double total;
 	
+	@JsonBackReference
 	@ManyToOne(optional=false)
 	@JoinColumn(name="vendorId")
 	private Vendor vendor;

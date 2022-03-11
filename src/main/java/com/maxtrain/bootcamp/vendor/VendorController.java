@@ -12,6 +12,25 @@ public class VendorController {
 	@Autowired
 	private VendorRepository vndRepo;
 	
+//	@SuppressWarnings("rawtypes")
+//	@PutMapping("recalc/{vendorId}")
+//	public ResponseEntity recalcVendorTotal(@PathVariable int vendorId) {
+//		var optVendor = vndRepo.findById(vendorId);
+//		if(optVendor.isEmpty()) {
+//			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//		}
+//		var vendor = optVendor.get();
+//		var invoices = vndRepo.findInvoices(vendor.getId());
+//		var invoiceTotal = 0;
+//		for(var invoice : invoices) {
+//			invoiceTotal += invoice.getTotal();
+//		}
+//		vendor.setTotal(invoiceTotal);
+//		vndRepo.save(vendor);
+//		
+//		return new ResponseEntity<>(HttpStatus.OK);
+//	}
+	
 	@GetMapping
 	public ResponseEntity<Iterable<Vendor>> getVendors() {
 		var vendors = vndRepo.findAll();

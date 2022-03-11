@@ -1,6 +1,11 @@
 package com.maxtrain.bootcamp.vendor;
 
+import java.util.List;
+
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.maxtrain.bootcamp.invoice.Invoice;
 
 @Entity
 @Table(uniqueConstraints=@UniqueConstraint(name="UIDX_code", columnNames={"code"}))
@@ -15,6 +20,18 @@ public class Vendor {
 	@Column(columnDefinition="decimal(9,2) NOT NULL DEFAULT 0.0")
 	private double total;
 	private boolean active;
+	
+	@JsonManagedReference
+	@OneToMany(mappedBy="vendor")
+	private List<Invoice> invoices;
+	
+	public List<Invoice> getInvoices() {
+		return invoices;
+	}
+	
+	public void setInvoices(List<Invoice> invoices) {
+		this.invoices = invoices;
+	}
 	
 	public Vendor() {
 		setActive(true);
