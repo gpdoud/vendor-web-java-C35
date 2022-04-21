@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
+import com.maxtrain.bootcamp.invoice.InvoiceRepository;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/api/vendors")
@@ -11,7 +13,9 @@ public class VendorController {
 	
 	@Autowired
 	private VendorRepository vndRepo;
-	
+//	@Autowired
+//	private InvoiceRepository invRepo;
+//	
 //	@SuppressWarnings("rawtypes")
 //	@PutMapping("recalc/{vendorId}")
 //	public ResponseEntity recalcVendorTotal(@PathVariable int vendorId) {
@@ -20,7 +24,7 @@ public class VendorController {
 //			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 //		}
 //		var vendor = optVendor.get();
-//		var invoices = vndRepo.findInvoices(vendor.getId());
+//		var invoices = invRepo.findInvoicesByVendorId(vendorId);
 //		var invoiceTotal = 0;
 //		for(var invoice : invoices) {
 //			invoiceTotal += invoice.getTotal();

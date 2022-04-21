@@ -2,6 +2,7 @@ package com.maxtrain.bootcamp.invoiceline;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.maxtrain.bootcamp.invoice.Invoice;
 import com.maxtrain.bootcamp.product.Product;
 
@@ -13,6 +14,7 @@ public class Invoiceline {
 	private int id;
 	private int quantity;
 	
+	@JsonBackReference
 	@ManyToOne(optional=false)
 	@JoinColumn(name="invoiceId")
 	private Invoice invoice;

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.maxtrain.bootcamp.invoiceline.Invoiceline;
 import com.maxtrain.bootcamp.vendor.Vendor;
 
@@ -26,18 +27,19 @@ public class Invoice {
 	@JoinColumn(name="vendorId")
 	private Vendor vendor;
 	
-//	@OneToMany(mappedBy="invoice")
-//	private List<Invoiceline> invoicelines;
+	@JsonManagedReference
+	@OneToMany(mappedBy="invoice")
+	private List<Invoiceline> invoicelines;
 	
 	public Invoice() {}
 
-//	public List<Invoiceline> getInvoicelines() {
-//		return invoicelines;
-//	}
-//	
-//	public void setInvoicelines(List<Invoiceline> invoicelines) {
-//		this.invoicelines = invoicelines;
-//	}
+	public List<Invoiceline> getInvoicelines() {
+		return invoicelines;
+	}
+	
+	public void setInvoicelines(List<Invoiceline> invoicelines) {
+		this.invoicelines = invoicelines;
+	}
 	
 	public int getId() {
 		return id;
